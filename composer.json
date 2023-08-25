@@ -1,0 +1,49 @@
+{
+    "name": "cracksalad/i18n",
+    "version": "0.1.0",
+    "type": "library",
+    "description": "PHP library to properly handle internationalization, but in a stateless fashion - no gettext()!",
+    "keywords": [
+        "i18n",
+        "locale",
+        "translation",
+        "gettext",
+        "intl"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andreas Wahlen",
+            "role": "Maintainer"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "gettext/gettext": "^5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cracksalad\\I18n\\": "src"
+        }
+    },
+    "scripts": {
+        "phpunit": "./tools/phpunit test",
+        "phpcpd": "./tools/phpcpd php_include",
+        "psalm": "./tools/psalm --no-diff --use-baseline=psalm.baseline.xml --php-version=8.0",
+        "psalm-stats": "./tools/psalm --no-diff --use-baseline=psalm.baseline.xml --php-version=8.0 --stats | grep -v '(0 mixed)'",
+        "update-psalm-baseline": "./tools/psalm --no-diff --set-baseline=psalm.baseline.xml",
+        "tests": [
+            "@phpunit",
+            "@phpcpd",
+            "@psalm"
+        ]
+    },
+    "scripts-descriptions": {
+        "phpunit": "Runs unit/integration tests.", 
+        "phpcpd": "Runs copied code finder.",
+        "psalm": "Runs static analysis.",
+        "psalm-stats": "Print files with unsafe types based on psalm.",
+        "update-psalm-baseline": "Updates baseline for psalm. CAUTION should not be run as a regular procedure!",
+        "tests": "Runs all available tests."
+    }
+}
