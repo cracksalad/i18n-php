@@ -34,7 +34,7 @@ $i18n->_fe('I first published this library on {0, date, short}', 1692982322);
 $i18n->_pf('%d item saved', '%d items saved', 42);
 // -> 42 items saved
 $i18n->_pf('%d item saved', '%d items saved', 1);
-// -> 42 item saved
+// -> 1 item saved
 ```
 
 ## License
