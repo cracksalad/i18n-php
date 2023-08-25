@@ -2,7 +2,7 @@
 
 This library depends on [php-gettext/Gettext](https://github.com/php-gettext/Gettext) and is inspired by [delight-im/PHP-I18N](https://github.com/delight-im/PHP-I18N) as well as [gettext](https://www.php.net/manual/en/function.gettext).
 
-The main difference to delight-im/PHP-I18N is that this library does not use `gettext()` and `setlocale()` but instead is stateless and thereby supports independent (concurrent) request handling as it is done with [PSR-15: HTTP Handlers](https://www.php-fig.org/psr/psr-15/) and [OpenSwoole](https://openswoole.com/).
+Although this library is mainly compatible with delight-im/PHP-I18N, there are some differences. The main difference is that this library does not use `gettext()` and `setlocale()` but instead is stateless and thereby supports independent (concurrent) request handling as it is done with [PSR-15: HTTP Handlers](https://www.php-fig.org/psr/psr-15/) and [OpenSwoole](https://openswoole.com/). Another difference is that this library does not try to detect the users language based on the domain and path of the current URL or on some cookie.
 
 ## Installation
 
@@ -14,8 +14,22 @@ composer require cracksalad/i18n
 
 ## Usage
 
+First you need to create translation files (e.g. using `xgettext` in bash) in a folder structure like this:
+
+```
+locale/
+├─ en/
+│  ├─ LC_MESSAGES/
+│  │  ├─ messages.mo
+│  │  ├─ messages.po
+├─ de/
+│  ├─ LC_MESSAGES/
+│  │  ├─ messages.mo
+│  │  ├─ messages.po
+```
+
 ```php
-use Cracksalad\I18n;
+use Cracksalad\I18n\I18n;
 
 $i18n = I18n::load('en');
 
