@@ -1,6 +1,6 @@
 {
     "name": "cracksalad/i18n",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "type": "library",
     "description": "PHP library to properly handle internationalization, but in a stateless fashion - no gettext()!",
     "keywords": [

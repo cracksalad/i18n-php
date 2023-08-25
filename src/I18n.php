@@ -18,7 +18,7 @@ class I18n implements \JsonSerializable {
   /**
    * @throws \InvalidArgumentException if the translation .mo file could not be found or read.
    */
-  protected function __construct(string $locale, string $domain = 'messages', string $directory = './locale') {
+  public function __construct(string $locale, string $domain = 'messages', string $directory = './locale') {
     $this->locale = $locale;
     
     $path = \realpath($directory).DIRECTORY_SEPARATOR.$locale.DIRECTORY_SEPARATOR.'LC_MESSAGES'.DIRECTORY_SEPARATOR.$domain.'.mo';
