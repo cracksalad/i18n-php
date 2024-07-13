@@ -14,3 +14,4 @@ jobs:
         uses: docker://vimeo/psalm-github-actions
         with:
           args: --shepherd
+          composer_ignore_platform_reqs: true

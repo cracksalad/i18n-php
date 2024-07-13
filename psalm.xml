@@ -11,4 +11,8 @@
     <projectFiles>
         <directory name="src" />
     </projectFiles>
+    
+    <stubs>
+        <file name="stubs/intl.php"></file>
+    </stubs>
 </psalm>

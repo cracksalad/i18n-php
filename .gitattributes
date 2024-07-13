@@ -4,3 +4,4 @@
 /.phive                 export-ignore
 /psalm.baseline.xml     export-ignore
 /psalm.xml              export-ignore
+/stubs                  export-ignore
