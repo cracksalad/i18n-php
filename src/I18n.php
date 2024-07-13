@@ -21,7 +21,11 @@ class I18n implements \JsonSerializable {
   public function __construct(string $locale, string $domain = 'messages', string $directory = './locale') {
     $this->locale = $locale;
     
-    $path = \realpath($directory).DIRECTORY_SEPARATOR.$locale.DIRECTORY_SEPARATOR.'LC_MESSAGES'.DIRECTORY_SEPARATOR.$domain.'.mo';
+    $realpath = \realpath($directory);
+    if($realpath === false){
+      throw new \InvalidArgumentException($directory.' does not exist or is not readable');
+    }
+    $path = $realpath.DIRECTORY_SEPARATOR.$locale.DIRECTORY_SEPARATOR.'LC_MESSAGES'.DIRECTORY_SEPARATOR.$domain.'.mo';
     if(!is_file($path) || !is_readable($path)){
       throw new \InvalidArgumentException($path.' does not exist or is not readable');
     }
