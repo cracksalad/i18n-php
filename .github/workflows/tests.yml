@@ -1,0 +1,16 @@
+name: "Tests"
+on: 
+  - push
+  - pull_request
+jobs:
+  type-checker:
+    name: Type checker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Psalm
+        uses: docker://vimeo/psalm-github-actions
+        with:
+          args: --shepherd

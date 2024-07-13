@@ -1,5 +1,11 @@
 # i18n
 
+[![Latest Stable Version](http://poser.pugx.org/cracksalad/i18n/v)](https://packagist.org/packages/cracksalad/i18n)
+[![Total Downloads](http://poser.pugx.org/cracksalad/i18n/downloads)](https://packagist.org/packages/cracksalad/i18n)
+[![License](http://poser.pugx.org/cracksalad/i18n/license)](https://packagist.org/packages/cracksalad/i18n)
+[![PHP Version Require](http://poser.pugx.org/cracksalad/i18n/require/php)](https://packagist.org/packages/cracksalad/i18n)
+[![Psalm Type Coverage](https://shepherd.dev/github/cracksalad/i18n-php/coverage.svg)](https://packagist.org/packages/cracksalad/i18n)
+
 This library depends on [php-gettext/Gettext](https://github.com/php-gettext/Gettext) and is inspired by [delight-im/PHP-I18N](https://github.com/delight-im/PHP-I18N) as well as [gettext](https://www.php.net/manual/en/function.gettext).
 
 Although this library is mainly compatible with delight-im/PHP-I18N, there are some differences. The main difference is that this library does not use `gettext()` and `setlocale()` but instead is stateless and thereby supports independent (concurrent) request handling as it is done with [PSR-15: HTTP Handlers](https://www.php-fig.org/psr/psr-15/) and [OpenSwoole](https://openswoole.com/). Another difference is that this library does not try to detect the users language based on the domain and path of the current URL or on some cookie.
