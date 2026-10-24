@@ -1,0 +1,56 @@
+name: CI
+
+on: 
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  coding-standard:
+    runs-on: ubuntu-latest
+    name: Coding Standard
+    
+    steps:
+      - uses: actions/checkout@v7
+      - name: Cache Composer dependencies
+        uses: actions/cache@v6
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+      - uses: php-actions/composer@v6
+        with:
+          php_version: "8.1"
+      - name: Check coding standard
+        run: composer phpcs
+
+  static-analysis:
+    name: Type checker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Psalm
+        uses: docker://vimeo/psalm-github-actions:6.20.0
+        with:
+          args: --shepherd
+          composer_ignore_platform_reqs: true
+
+  rector:
+    runs-on: ubuntu-latest
+    name: Rector
+    
+    steps:
+      - uses: actions/checkout@v7
+      - name: Cache Composer dependencies
+        uses: actions/cache@v6
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+      - uses: php-actions/composer@v6
+        with:
+          php_version: "8.5"
+      - name: Check compatibility
+        run: composer rector

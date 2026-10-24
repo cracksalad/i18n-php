@@ -9,6 +9,7 @@ use Gettext\Loader\MoLoader;
 
 /**
  * @author Andreas Wahlen
+ * @api
  */
 class I18n implements \JsonSerializable {
 
@@ -34,6 +35,7 @@ class I18n implements \JsonSerializable {
     $this->translations = $loader->loadFile($path);
   }
   
+  #[\Override()]
   public function jsonSerialize(): array {
     return [
       'locale' => $this->locale,

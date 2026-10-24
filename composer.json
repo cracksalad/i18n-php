@@ -22,29 +22,34 @@
         "ext-intl": "*",
         "gettext/gettext": "^5.7"
     },
+    "require-dev": {
+        "rector/rector": "^2.0",
+        "squizlabs/php_codesniffer": "^4.0"
+    },
     "autoload": {
         "psr-4": {
             "Cracksalad\\I18n\\": "src"
         }
     },
     "scripts": {
-        "phpunit": "./tools/phpunit test",
-        "phpcpd": "./tools/phpcpd php_include",
+        "phpcs": "./vendor/bin/phpcs",
+        "phpcpd": "./tools/phpcpd src",
         "psalm": "./tools/psalm --no-diff --use-baseline=psalm.baseline.xml --php-version=8.0",
-        "psalm-stats": "./tools/psalm --no-diff --use-baseline=psalm.baseline.xml --php-version=8.0 --stats | grep -v '(0 mixed)'",
         "update-psalm-baseline": "./tools/psalm --no-diff --set-baseline=psalm.baseline.xml",
+        "rector": "./vendor/bin/rector process --dry-run",
         "tests": [
-            "@phpunit",
+            "@phpcs",
             "@phpcpd",
-            "@psalm"
+            "@psalm",
+            "@rector"
         ]
     },
     "scripts-descriptions": {
-        "phpunit": "Runs unit/integration tests.", 
+        "phpcs": "Runs CodeSniffer for coding style tests.", 
         "phpcpd": "Runs copied code finder.",
         "psalm": "Runs static analysis.",
-        "psalm-stats": "Print files with unsafe types based on psalm.",
         "update-psalm-baseline": "Updates baseline for psalm. CAUTION should not be run as a regular procedure!",
+        "rector": "Runs PHP compatibility checks and code smell analysis.",
         "tests": "Runs all available tests."
     }
 }
