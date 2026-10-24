@@ -22,6 +22,7 @@ jobs:
       - uses: php-actions/composer@v6
         with:
           php_version: "8.1"
+          php_extensions: intl
       - name: Check coding standard
         run: composer phpcs
 
@@ -52,5 +53,6 @@ jobs:
       - uses: php-actions/composer@v6
         with:
           php_version: "8.5"
+          php_extensions: intl
       - name: Check compatibility
         run: composer rector
